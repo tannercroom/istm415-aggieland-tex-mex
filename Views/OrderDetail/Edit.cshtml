@@ -1,0 +1,51 @@
+﻿@model OrderDetail
+@{
+    string title = ViewBag.Action + " Order";
+    ViewData["Title"] = title;
+}
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div id="header">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+    <div id="content">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="All"></div>
+            <table>
+                <tr>
+                    <td><label asp-for="OrderDetailID">OrderDetail ID: </label></td>
+                    <td><input asp-for="OrderDetailID" readonly /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="OrderID">Order ID: </label></td>
+                    <td><input asp-for="OrderID" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="ItemID">Item ID: </label></td>
+                    <td><input asp-for="ItemID" /></td>
+                </tr>
+                @*<tr>
+                    <td><label asp-for="ItemName">Item Name: </label></td>
+                    <td><input asp-for="ItemName" /></td>
+                </tr>*@
+                <tr>
+                    <td><label asp-for="OrderQuantity">Quantity: </label></td>
+                    <td><input asp-for="OrderQuantity" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="OrderDetailSubtotal">Subtotal: </label></td>
+                    <td><input asp-for="OrderDetailSubtotal" /></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Save</button></td>
+                    <td>
+                        <a asp-controller="OrderDetail"
+                           asp-action="OrderDetail">Cancel</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>

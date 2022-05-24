@@ -1,0 +1,57 @@
+﻿@model List<Order>
+@{
+    ViewData["Title"] = "Orders Table";
+}
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Orders Table</h1>
+        <br />
+    </div>
+    <div id="content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Employee ID</th>
+                    <th>Customer ID</th>
+                    <th>Date</th>
+                    <th>Payment</th>
+                    <th>Card Name</th>
+                    <th>Card Number</th>
+                    <th>CVV</th>
+                    <th>Exp. Date</th>
+                    <th>Subtotal</th>
+                    <th>Tax</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                 {
+                    if (order.OrderID > 0)
+                    {
+                        <tr>
+                            <td>@order.OrderID</td>
+                            <td>@order.EmployeeID</td>
+                            <td>@order.CustomerID</td>
+                            <td>@order.OrderDate</td>
+                            <td>@order.PaymentType</td>
+                            <td>@order.CardName</td>
+                            <td>@order.CardNumber</td>
+                            <td>@order.CVV</td>
+                            <td>@order.CardExpirationDate</td>
+                            <td>@order.Subtotal.ToString("c2")</td>
+                            <td>@order.Tax.ToString("c2")</td>
+                            <td>@order.Total.ToString("c2")</td>
+                            <td><a asp-controller="Order" asp-action="Edit" asp-route-id="@order.OrderID">Edit</a></td>
+                            <td><a asp-controller="Order" asp-action="Delete" asp-route-id="@order.OrderID">Delete</a></td>
+                        </tr>
+                    }
+                 }
+            </tbody>
+        </table>
+    </div>
+</body>

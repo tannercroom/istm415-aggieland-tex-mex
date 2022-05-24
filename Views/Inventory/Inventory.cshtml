@@ -1,0 +1,40 @@
+﻿@model List<Inventory>
+@{
+    ViewData["Title"] = "Inventory Table";
+}
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Inventory Table</h1>
+        <br />
+    </div>
+    <div id="content">
+        <a asp-controller="Inventory" asp-action="Add">Add New Item</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Quantity Avail.</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ItemID</td>
+                        <td>@item.ItemName</td>
+                        <td>@item.ItemType</td>
+                        <td>@item.ItemQuantity</td>
+                        <td><a asp-controller="Inventory" asp-action="Edit" asp-route-id="@item.ItemID">Edit</a></td>
+                        <td><a asp-controller="Inventory" asp-action="Delete" asp-route-id="@item.ItemID">Delete</a></td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</body>

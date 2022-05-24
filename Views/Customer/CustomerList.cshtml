@@ -1,0 +1,50 @@
+﻿@model List<Customer>
+@{
+    ViewData["Title"] = "Customers Table";
+}
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Customers Table</h1>
+        <br />
+    </div>
+    <div id="content">
+        <a asp-controller="Customer" asp-action="Add">Add New Customer</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Street</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>ZIP</th>
+                    <th>Phone</th>
+                    <th>E-Mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model)
+                {
+                    <tr>
+                        <td>@customer.CustomerID</td>
+                        <td>@customer.FirstName</td>
+                        <td>@customer.LastName</td>
+                        <td>@customer.Street</td>
+                        <td>@customer.City</td>
+                        <td>@customer.State</td>
+                        <td>@customer.ZipCode</td>
+                        <td>@customer.Phone</td>
+                        <td>@customer.Email</td>
+                        <td><a asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustomerID">Edit</a></td>
+                        <td><a asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CustomerID">Delete</a></td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</body>

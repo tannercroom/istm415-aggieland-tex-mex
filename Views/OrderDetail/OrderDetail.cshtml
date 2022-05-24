@@ -1,0 +1,40 @@
+﻿@model List<OrderDetail>
+@{
+    ViewData["Title"] = "Order Details Table";
+}
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Order Details Table</h1>
+        <br />
+    </div>
+    <div id="content">
+        <table>
+            <thead>
+                <tr>
+                    <th>OrderDetail ID</th>
+                    <th>Order ID</th>
+                    <th>Item ID</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var orderdetail in Model)
+                 {
+                    <tr>
+                        <td>@orderdetail.OrderDetailID</td>
+                        <td>@orderdetail.OrderID</td>
+                        <td>@orderdetail.ItemID</td>
+                        <td>@orderdetail.OrderQuantity</td>
+                        <td>@orderdetail.OrderDetailSubtotal.ToString("c2")</td>
+                        <td><a asp-controller="OrderDetail" asp-action="Edit" asp-route-id="@orderdetail.OrderDetailID">Edit</a></td>
+                        <td><a asp-controller="OrderDetail" asp-action="Delete" asp-route-id="@orderdetail.OrderDetailID">Delete</a></td>
+                    </tr>
+                 }
+            </tbody>
+        </table>
+    </div>
+</body>

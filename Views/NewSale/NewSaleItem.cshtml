@@ -1,0 +1,45 @@
+﻿@model OrderDetail
+@{
+    ViewData["Title"] = "New Sale Item";
+}
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div id="header">
+        <h1>@ViewData["Title"]</h1>
+        <br />
+    </div>
+    <div id="content">
+        <form asp-action="NewSaleItem" method="post">
+            <table>
+                <tr>
+                    <td><label asp-for="ItemID">Item Name: </label></td>
+                    <td>
+                        <select asp-for="ItemID">
+                            @{
+                                foreach (var item in ViewBag.Inventory)
+                                {
+                                    <option value="@item.ItemID">@item.ItemName</option>
+                                }
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="OrderQuantity">Quantity: </label></td>
+                    <td><input asp-for="OrderQuantity" /></td>
+                </tr>
+                <tr><td><br /></td></tr> @*Line Break*@
+                <tr>
+                    <td><button type="submit" value="0">Add Item</button></td>
+                    <td><a asp-controller="NewSale" asp-action="FinishSale">Finish Sale</a></td>
+                    <td>
+                        <a asp-controller="Home"
+                           asp-action="Index">Cancel</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>

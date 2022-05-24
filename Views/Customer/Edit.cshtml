@@ -1,0 +1,56 @@
+﻿@model Customer
+@{
+    string title = ViewBag.Action + " Customer";
+    ViewBag.Title = title;
+}
+<h2>@ViewBag.Title</h2>
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All"></div>
+    <table>
+        <tr>
+            <td><label asp-for="CustomerID">Customer ID: </label></td>
+            <td><input asp-for="CustomerID" readonly /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="FirstName">First Name: </label></td>
+            <td><input asp-for="FirstName" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="LastName">Last Name: </label></td>
+            <td><input asp-for="LastName" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Street">Street: </label></td>
+            <td><input asp-for="Street" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="City">City: </label></td>
+            <td><input asp-for="City" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="State">State: </label></td>
+            <td><input asp-for="State" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="ZipCode">ZipCode: </label></td>
+            <td><input asp-for="ZipCode" /></td>
+            <td><i>Must be 5 or 9 numeric digits (Ex: 12345 or 123456789)</i></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Phone">Phone: </label></td>
+            <td><input asp-for="Phone" /></td>
+            <td><i>Must be 10 numeric digits (Ex: 5555555555)</i></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Email">Email: </label></td>
+            <td><input asp-for="Email" placeholder="jdoe@example.com"/></td>
+        </tr>
+        <tr>
+            <td><button type="submit">Save</button></td>
+            <td>
+                <a asp-controller="Customer"
+                   asp-action="CustomerList">Cancel</a>
+            </td>
+        </tr>
+    </table>
+</form>

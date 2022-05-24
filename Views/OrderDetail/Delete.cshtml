@@ -1,0 +1,21 @@
+﻿@model OrderDetail
+@{
+    ViewData["Title"] = "Delete Order Detail";
+}
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div id="header">
+        <h2>Confirm Deletion</h2>
+    </div>
+    <div id="content">
+        <h3>Are you sure you would like to delete Order Detail ID: @Model.OrderDetailID from the database?</h3>
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="OrderDetailID" />
+
+            <button type="submit">Confirm</button>
+            <a asp-controller="OrderDetail" asp-action="OrderDetail">Cancel</a>
+        </form>
+    </div>
+</body>

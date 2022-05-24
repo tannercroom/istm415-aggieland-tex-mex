@@ -1,0 +1,101 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "New Sale Order";
+}
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div id="header">
+        <h1>@ViewData["Title"]</h1>
+        <br />
+    </div>
+    <div id="content">
+        <form asp-action="FinishSale" method="post">
+            <table>
+                @*<tr>
+            <td><label asp-for="OrderID">Order ID: </label></td>
+            <td><input asp-for="OrderID" readonly /></td>
+        </tr>*@
+                <tr>
+                    <td><label asp-for="EmployeeID">Employee: </label></td>
+                    <td>
+                        <select asp-for="EmployeeID">
+                            @{
+                                foreach (var employee in ViewBag.Employee)
+                                {
+                                    <option value="@employee.EmployeeID">@employee.FirstName @employee.LastName</option>
+                                }
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CustomerID">Customer: </label></td>
+                    <td>
+                        <select asp-for="CustomerID">
+                            <option value="@null"> </option>
+                            @{
+                                foreach (var customer in ViewBag.Customer)
+                                {
+                                    <option value="@customer.CustomerID">@customer.FirstName @customer.LastName</option>
+                                }
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="OrderDate">Order Date: </label></td>
+                    <td><input asp-for="OrderDate" readonly /></td>
+                </tr>
+
+                <tr><td><br /></td></tr> @*Line Break*@
+
+                <tr>
+                    <td><label asp-for="PaymentType">Payment Type: </label></td>
+                    <td>
+                        <select asp-for="PaymentType">
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Cash">Cash</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CardName">Card Name: </label></td>
+                    <td><input asp-for="CardName" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CardNumber">Card Number: </label></td>
+                    <td><input asp-for="CardNumber" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CVV">CVV: </label></td>
+                    <td><input asp-for="CVV" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CardExpirationDate">Expiration Date: </label></td>
+                    <td><input asp-for="CardExpirationDate" /></td>
+                </tr>
+
+                <tr><td><br /></td></tr> @*Line Break*@
+
+                <tr>
+                    <td><label asp-for="Subtotal">Subtotal: </label></td>
+                    <td>$<input asp-for="Subtotal" readonly/></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Tax">Tax: </label></td>
+                    <td>$<input asp-for="Tax" readonly/></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Total">Total: </label></td>
+                    <td>$<input asp-for="Total" readonly/></td>
+                </tr>
+                <tr><td><br /></td></tr> @*Line Break*@
+                <tr>
+                    <td><button type="submit">Save</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>

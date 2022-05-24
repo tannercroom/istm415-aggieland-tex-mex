@@ -1,0 +1,43 @@
+﻿@model Inventory
+@{
+    string title = ViewBag.Action + " Item";
+    ViewData["Title"] = title;
+}
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div id="header">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+    <div id="content">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="All"></div>
+            <table>
+                <tr>
+                    <td><label asp-for="ItemID">ID: </label></td>
+                    <td><input asp-for="ItemID" readonly /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="ItemName">Name: </label></td>
+                    <td><input asp-for="ItemName" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="ItemType">Type: </label></td>
+                    <td><input asp-for="ItemType" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="ItemQuantity">Quantity Available: </label></td>
+                    <td><input asp-for="ItemQuantity" /></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Save</button></td>
+                    <td>
+                        <a asp-controller="Inventory"
+                           asp-action="Inventory">Cancel</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>

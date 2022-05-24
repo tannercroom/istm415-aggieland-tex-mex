@@ -1,0 +1,80 @@
+﻿@model Order
+@{
+    string title = ViewBag.Action + " Order";
+    ViewData["Title"] = title;
+}
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div id="header">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+    <div id="content">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="All"></div>
+            <table>
+                <tr>
+                    <td><label asp-for="OrderID">Order ID: </label></td>
+                    <td><input asp-for="OrderID" readonly /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="EmployeeID">Employee ID: </label></td> @*Only valid EmployeeIDs?*@
+                    <td><input asp-for="EmployeeID" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CustomerID">Customer ID: </label></td> @*Only valid CustomerIDs?*@
+                    <td><input asp-for="CustomerID" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="OrderDate">OrderDate: </label></td>
+                    <td><input asp-for="OrderDate" readonly /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="PaymentType">Payment Type: </label></td>
+                    <td>
+                        <select asp-for="PaymentType">
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Cash">Cash</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CardName">Card Name: </label></td>
+                    <td><input asp-for="CardName" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CardNumber">Card Number: </label></td>
+                    <td><input asp-for="CardNumber" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CVV">CVV: </label></td>
+                    <td><input asp-for="CVV" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CardExpirationDate">Expiration Date: </label></td>
+                    <td><input asp-for="CardExpirationDate" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Subtotal">Subtotal: </label></td>
+                    <td><input asp-for="Subtotal" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Tax">Tax: </label></td>
+                    <td><input asp-for="Tax" readonly /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Total">Total: </label></td>
+                    <td><input asp-for="Total" readonly /></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Save</button></td>
+                    <td>
+                        <a asp-controller="Order"
+                           asp-action="Order">Cancel</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
